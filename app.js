@@ -120,7 +120,7 @@ app.put("/api/users", jsonParser, function(req, res){
     const userName = req.body.name;
     const userSurname = req.body.surname;
     const userAge = req.body.age;
-    const updated_at = moment(currentDate).format("YYYY-MM-DD HH:mm:ss");
+    const updated_At = moment(currentDate).format("YYYY-MM-DD HH:mm:ss"); // изменено имя. обновляет только в первый раз, разобраться
       
     let data = fs.readFileSync(filePath, "utf8");
     const users = JSON.parse(data);
@@ -136,7 +136,7 @@ app.put("/api/users", jsonParser, function(req, res){
         user.age = userAge;
         user.name = userName;
         user.surname = userSurname;
-        user.updated_at = updated_at;
+        user.updated_at = updated_At;
         data = JSON.stringify(users);
         fs.writeFileSync("users.json", data);
         res.send(user);

@@ -8,22 +8,6 @@ const Sequelize = require("sequelize")
 let currentDate = new Date();
 
 
-const sequelize = new Sequelize(
-    'db_name',
-    'user',
-    'password',
-    {
-      dialect: 'postgres',
-    }
-  )
-
-sequelize
-  .authenticate()
-  .then(() => console.log('Connected.'))
-  .catch((err) => console.error('Connection error: ', err))
-
-
-
 app.use(express.static(__dirname + "/public"));
 
 app.options('*', (req, res) => {

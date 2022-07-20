@@ -3,9 +3,7 @@ const fs = require("fs");
 const moment = require("moment")
 const app = express();
 const jsonParser = express.json();
-const Sequelize = require("sequelize")
 
-let currentDate = new Date();
 
 
 app.use(express.static(__dirname + "/public"));
@@ -63,8 +61,8 @@ app.post("/api/users", jsonParser, function (req, res) {
     const userName = req.body.name;
     const userSurname = req.body.surname
     const userAge = req.body.age;
-    const created_at = moment(currentDate).format("YYYY-MM-DD HH:mm:ss");
-    const updated_at = moment(currentDate).format("YYYY-MM-DD HH:mm:ss");
+    const created_at = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+    const updated_at = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
     let user = {name: userName, surname: userSurname, age: userAge, created_at: created_at, updated_at: updated_at};
       
     let data = fs.readFileSync(filePath, "utf8");
